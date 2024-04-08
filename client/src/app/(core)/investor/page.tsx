@@ -1,5 +1,5 @@
 'use client';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {
     AlertDialog,
     AlertDialogAction,
@@ -21,8 +21,73 @@ import {
     TableRow,
 } from '@/components/ui/table';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
-
 const Dashboard = () => {
+    const [invested_companies, setInvestedCompanies] = useState<any>([]);
+    const [uninvested_companies, setUninvestedCompanies] = useState<any>([]);
+    const get_invested_companies = async () => {
+        const url = 'http://localhost:3000/api/company/invested';
+        fetch(url, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        }).then((response) => {
+            if (response.ok) {
+                return response.json();
+            }
+            throw new Error('Failed to get companies');
+        }).then((data) => {
+            console.log('Companies:', data);
+            setInvestedCompanies(data);
+        }).catch((error) => {
+            console.error('Error:', error);
+        });
+    };
+
+    const get_uninvested_companies = async () => {
+        const url = 'http://localhost:3000/api/company/uninvested';
+        fetch(url, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        }).then((response) => {
+            if (response.ok) {
+                return response.json();
+            }
+            throw new Error('Failed to get companies');
+        }).then((data) => {
+            console.log('Companies:', data);
+            setUninvestedCompanies(data);
+        }).catch((error) => {
+            console.error('Error:', error);
+        });
+    };
+    const handle_invest = async (email: string) => {
+        const url = `http://localhost:3000/api/company/invest/${email}`;
+        fetch(url, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        }).then((response) => {
+            if (response.ok) {
+                return response.json();
+            }
+            throw new Error('Failed to invest in company');
+        }).then((data) => {
+            console.log('Invested:', data);
+            get_invested_companies();
+            get_uninvested_companies();
+        }).catch((error) => {
+            console.error('Error:', error);
+        });
+    }
+
+    useEffect(() => {
+        get_invested_companies();
+        get_uninvested_companies();
+    }, []);
     return (
         <div className="flex flex-col space-y-10 justify-between px-8 py-8">
             <div className="grid grid-cols-3 gap-3 md:grid-cols-3 md:gap-8 md:text-2xl font-medium">
@@ -73,11 +138,9 @@ const Dashboard = () => {
                             </TableHeader>
                             <TableBody>
                                 <TableRow className='flex flex-col'>
-                                    <TableCell className="font-medium">INV001</TableCell>
-                                    <TableCell className="font-medium">INV001</TableCell>
-                                    <TableCell className="font-medium">INV001</TableCell>
-                                    <TableCell className="font-medium">INV001</TableCell>
-                                    <TableCell className="font-medium">INV001</TableCell>
+                                    {invested_companies.map((company: any, index: number) => (
+                                        <TableCell key={index} className="font-medium">{company.name}</TableCell>
+                                    ))}
                                 </TableRow>
                             </TableBody>
                         </Table>
@@ -94,11 +157,9 @@ const Dashboard = () => {
                             </TableHeader>
                             <TableBody>
                                 <TableRow className='flex flex-col'>
-                                    <TableCell className="font-medium">INV001</TableCell>
-                                    <TableCell className="font-medium">INV001</TableCell>
-                                    <TableCell className="font-medium">INV001</TableCell>
-                                    <TableCell className="font-medium">INV001</TableCell>
-                                    <TableCell className="font-medium">INV001</TableCell>
+                                    {uninvested_companies.map((company: any, index: number) => (
+                                        <TableCell key={index} className="font-medium">{company.name}</TableCell>
+                                    ))}
                                 </TableRow>
                             </TableBody>
                         </Table>
