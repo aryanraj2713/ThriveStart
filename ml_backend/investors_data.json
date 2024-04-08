@@ -1,7 +1,7 @@
 [
 	{
 		"name": "John Doe",
-		"id": 1,
+		"id": "f5f144a9-6cb1-4d13-836e-18ac5c0a80a3",
 		"netWorth": 350000000,
 		"education": [
 			{
@@ -28,5 +28,36 @@
 		],
 		"specializationIndustry": ["Consumer Goods", "Apparel", "Retail"],
 		"sectors": ["Textiles", "Clothing", "Accessories", "Footwear"]
+	},
+	{
+		"name": "Jane Smith",
+		"id": "e2f7c09e-ef2d-4d1d-9e58-872d502a49c9",
+		"netWorth": 280000000,
+		"education": [
+			{
+				"degree": "Bachelor of Arts",
+				"major": "Economics",
+				"institution": "Stanford University"
+			},
+			{
+				"degree": "Master of Science",
+				"major": "Finance",
+				"institution": "Wharton School of the University of Pennsylvania"
+			}
+		],
+		"companiesInvested": [
+			{
+				"name": "Tesla",
+				"amount": 15000000,
+				"ownership": 8
+			},
+			{
+				"name": "SpaceX",
+				"amount": 30000000,
+				"ownership": 15
+			}
+		],
+		"specializationIndustry": ["Technology", "Automotive", "Space Exploration"],
+		"sectors": ["Electric Vehicles", "Aerospace", "Satellite Technology", "Software Development"]
 	}
 ]
