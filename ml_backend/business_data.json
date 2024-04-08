@@ -1,15 +1,11 @@
 {
-  "company_name": "ABC Corporation",
-  "id": 1,
-  "revenue": "$10,000,000",
-  "industry": "Technology",
-  "USP": "Cutting-edge AI solutions",
-  "sales": "$8,000,000",
-  "profit": "$2,000,000",
-  "employees": 100,
+  "company_name": "PQR Tech Solutions",
+  "id": 3,
+  "revenue": "$25,000,000",
+  "industry": "Information Technology",
+  "USP": "Cutting-edge Software Development",
+  "sales": "$15,000,000",
+  "profit": "$5,000,000",
+  "employees": 250,
   "age": "5 years"
-}
-{
-  "company_name": "XYZ Corporation",
-  "id": 2,
 }
