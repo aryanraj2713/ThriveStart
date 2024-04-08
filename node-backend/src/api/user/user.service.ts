@@ -8,3 +8,12 @@ export const update = async (email: string, data: any) => {
     }
     await user_collection.updateOne({ email: email }, { $set: data });
 };
+
+export const get_user = async (email: string) => {
+    const user_collection = await (await database()).collection("users");
+    const user = await user_collection.findOne({ email });
+    if (!user) {
+        throw new Error("User not found");
+    }
+    return user;
+}

@@ -27,3 +27,12 @@ export const handle_update_company = async (data: any) => {
     }
     await company_collection.updateOne({ email: data.email }, { $set: data });
 };
+
+export const handle_get_company = async (email: string) => {
+    const company_collection = await (await database()).collection('companies');
+    const company = await company_collection.findOne({ email });
+    if (!company) {
+        throw new Error('Company not found');
+    }
+    return company;
+}

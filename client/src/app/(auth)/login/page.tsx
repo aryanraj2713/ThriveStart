@@ -36,11 +36,15 @@ export function LoginForm() {
     }).then((data) => {
       console.log('Login:', data);
       toast.success('You are now logged in!');
+      localStorage.setItem('token', data.token.token);
+      localStorage.setItem('email', data.token.user.email);
       if (data.token.user.is_investor) {
+        localStorage.setItem('is_investor', 'true');
         window.location.href = '/investor';
         toast.info('You are now logged in!');
       }
       else {
+        localStorage.setItem('is_investor', 'false');
         window.location.href = '/dashboard';
         toast.info('You are now logged in!');
       }

@@ -28,6 +28,7 @@ const siteLinks = [
 ];
 
 export const Nav = () => {
+  const isInvestor = localStorage.getItem('is_investor');
   const router = useRouter();
   return (
     <header className="fixed z-50 top-0 flex h-16 items-center gap-4 border-b bg-background px-4 md:px-6 justify-between w-full">
@@ -39,7 +40,7 @@ export const Nav = () => {
           <Package2 className="h-6 w-6" />
           <span className="sr-only">Acme Inc</span>
         </Link>
-        {localStorage.getItem('is_investor') !== 'true' && siteLinks.map(link => (
+        {isInvestor !== 'true' && siteLinks.map(link => (
           <Link
             key={link.name}
             href={link.to}
@@ -107,6 +108,7 @@ export const Nav = () => {
             <DropdownMenuSeparator />
             <DropdownMenuItem
               onClick={() => {
+                localStorage.clear();
                 router.push('/');
                 toast.info('You are now logged out!');
               }}

@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { update } from "./user.service";
+import { get_user, update } from "./user.service";
 
 export const update_handle = async (req: Request, res: Response) => {
     try {
@@ -11,3 +11,13 @@ export const update_handle = async (req: Request, res: Response) => {
         res.status(400).json({ message: error.message });
     }
 };
+
+export const handle_get_user = async (request: Request, response: Response) => {
+    try {
+        const { email } = request.params;
+        const data = await get_user(email);
+        response.status(200).json({ data })
+    } catch (error) {
+        response.status(400).json({ message: error.message });
+    }
+}

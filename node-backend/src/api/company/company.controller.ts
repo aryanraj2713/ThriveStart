@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { get_uninvested_companies_by_investor, handle_get_invested_companies, handle_update_company, invest_in_company_by_investor } from "./compnay.service";
+import { get_uninvested_companies_by_investor, handle_get_company, handle_get_invested_companies, handle_update_company, invest_in_company_by_investor } from "./compnay.service";
 
 export const get_uninvested_companies = async (
     request: Request,
@@ -46,6 +46,19 @@ export const update_company = async (
         const data = request.body;
         await handle_update_company(data);
         response.status(200).send({ message: 'Company updated' });
+    } catch (error) {
+        response.status(500).send({ message: error.message });
+    }
+}
+
+export const get_company = async (
+    request: Request,
+    response: Response,
+) => {
+    try {
+        const { email } = request.params;
+        const data = await handle_get_company(email);
+        response.status(200).send(data);
     } catch (error) {
         response.status(500).send({ message: error.message });
     }
