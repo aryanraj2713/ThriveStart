@@ -26,13 +26,13 @@ def aadhar_upload():
         file.save(file_path)
 
         qr_data = decode_qr_opencv(file_path)
-        check_uid = check_uid_last_4_digits(qr_data, 'XXXXXXXX7743')  # Replace with your actual UID
+  # Replace with your actual UID
 
         if qr_data:
             return jsonify({
                 'message': 'Aadhar uploaded and stored successfully and data extracted successfully',
                 'qr_data': qr_data,
-                'uid_match': check_uid
+
             })
         else:
             return jsonify({
