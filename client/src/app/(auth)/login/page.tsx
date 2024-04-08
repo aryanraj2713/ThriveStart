@@ -43,7 +43,7 @@ export function LoginForm() {
         </Button>
       </CardFooter>
       <div className="text-center pb-4 pt-1">
-        Don't have an account?{' '}
+        Don&apos;t have an account?{' '}
         <Link href="/signup" className="underline">
           Sign up
         </Link>

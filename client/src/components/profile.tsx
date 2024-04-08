@@ -66,8 +66,8 @@ const ProfilePage: React.FC<ProfileProps> = ({
       <div>
         <p className="font-semibold mb-2">Social Links:</p>
         <ul>
-          {socialLinks.map((link, index) => (
-            <li key={index} className="mb-2">
+          {socialLinks.map(link => (
+            <li key={link.name} className="mb-2">
               <a
                 href={link.url}
                 className="text-blue-400 hover:text-blue-200"
