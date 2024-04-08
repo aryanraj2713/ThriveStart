@@ -40,7 +40,7 @@ const Dashboard = () => {
       </div>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
         <Card>
-          <CardContent className="place-content-center h-full">
+          <CardContent className="place-content-center h-full py-20">
             <PieChart
               series={[
                 {
@@ -124,6 +124,15 @@ const Dashboard = () => {
           </CardContent>
         </Card>
       </div>
+      <Card>
+        <CardHeader className='text-center'>Pitch</CardHeader>
+        <CardContent className='text-center'>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam
+          officiis voluptatum exercitationem at sint maiores eligendi
+          voluptatibus impedit est assumenda. Tenetur ad atque similique
+          aliquam.
+        </CardContent>
+      </Card>
     </div>
   );
 };
