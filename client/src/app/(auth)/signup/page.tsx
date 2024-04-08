@@ -44,13 +44,12 @@ export function LoginForm() {
     }).then((data) => {
       console.log('Signup:', data);
       toast.success('You are now signed up!');
-      if (isInvestor) {
-        toast.info('You are now logged in!');
-        sessionStorage.setItem('is_investor', 'true');
+      localStorage.setItem('email', email);
+      if (data.token.user.is_investor) {
+        localStorage.setItem('is_investor', 'true');
       }
       else {
-        sessionStorage.setItem('is_investor', 'false');
-        toast.info('You are now logged in!');
+        localStorage.setItem('is_investor', 'false');
       }
       window.location.href = '/kyc';
     }).catch((error) => {
