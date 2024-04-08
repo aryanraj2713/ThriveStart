@@ -5,9 +5,15 @@ from groq import Groq
 
 load_dotenv()
 
-def run_business_assistant():
-    open_json = open("business_data.json")
-    data = json.load(open_json)
+def run_business_assistant(id: str):
+    open_json = open("business_data_2.json")
+    data = json.load(open_json) 
+
+    # find the business data using the query
+    for business in data:
+        if business["id"] == id:
+            data = business
+            break
 
     client = Groq(
         # This is the default and can be omitted

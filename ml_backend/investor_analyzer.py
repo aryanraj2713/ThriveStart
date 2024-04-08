@@ -2,9 +2,15 @@ import os
 import json
 from groq import Groq
 
-def run_investor_desc():
+def run_investor_desc(id: int):
     open_json = open("investor_data.json")
     data = json.load(open_json)
+
+    # find the investor data using the query
+    for investor in data:
+        if investor["id"] == id:
+            data = investor
+            break
 
     client = Groq(
         # This is the default and can be omitted
@@ -29,7 +35,3 @@ def run_investor_desc():
     )
 
     return chat_completion.choices[0].message.content
-
-# Example usage:
-result = run_business_assistant()
-print(result)

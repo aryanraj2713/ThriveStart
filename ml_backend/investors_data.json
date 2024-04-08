@@ -1,32 +1,32 @@
-{
-  "name": "John Doe",
-  "id": "1",
-  "netWorth": 350000000,
-  "education": [
-    {
-      "degree": "Bachelor of Science",
-      "major": "Business Administration",
-      "institution": "University of Pennsylvania"
-    },
-    {
-      "degree": "Master of Business Administration",
-      "institution": "Harvard Business School"
-    }
-  ],
-  "companiesInvested": [
-    {
-      "name": "FUBU",
-      "amount": 8500000,
-      "ownership": 100
-    },
-    {
-      "name": "Bombas",
-      "amount": 200000,
-      "ownership": 17.5
-    }
-  ],
-  "specializationIndustry": ["Consumer Goods", "Apparel", "Retail"],
-  "sectors": ["Textiles", "Clothing", "Accessories", "Footwear"]
-}
-
-
+[
+	{
+		"name": "John Doe",
+		"id": 1,
+		"netWorth": 350000000,
+		"education": [
+			{
+				"degree": "Bachelor of Science",
+				"major": "Business Administration",
+				"institution": "University of Pennsylvania"
+			},
+			{
+				"degree": "Master of Business Administration",
+				"institution": "Harvard Business School"
+			}
+		],
+		"companiesInvested": [
+			{
+				"name": "FUBU",
+				"amount": 8500000,
+				"ownership": 100
+			},
+			{
+				"name": "Bombas",
+				"amount": 200000,
+				"ownership": 17.5
+			}
+		],
+		"specializationIndustry": ["Consumer Goods", "Apparel", "Retail"],
+		"sectors": ["Textiles", "Clothing", "Accessories", "Footwear"]
+	}
+]

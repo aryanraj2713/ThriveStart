@@ -1,17 +1,10 @@
-import os
-import numpy as np
-from fastapi import FastAPI, UploadFile, File, HTTPException
-from fastapi.responses import JSONResponse
-from pydantic import BaseModel
-from transformers import pipeline
-from typing import Optional
-import json
+from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 
 app = FastAPI()
 
- 
+
 app.add_middleware(
     CORSMiddleware,
     allow_origins="*",
@@ -30,12 +23,11 @@ async def root():
 
 
 @app.post("/analyze_b")
-async def analyze_business_data():
-    query = "Analyze the buisness and generate 5 bullet points from investors point of view."
-    result = run_business_assistant()
+async def analyze_business_data(id: str):
+    result = run_business_assistant(id)
     return {"result": result}
 
 @app.post("/analyze_i")
-async def run_investor_descp():
-    result = run_investor_desc()
+async def run_investor_descp(id: str):
+    result = run_investor_desc(id)
     return {"result": result}
