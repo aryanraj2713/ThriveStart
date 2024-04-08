@@ -13,12 +13,49 @@ import { Label } from '@/components/ui/label';
 import { Checkbox } from '@/components/ui/checkbox';
 import Link from 'next/link';
 import { toast } from 'sonner';
+import { useState } from 'react';
 
 export function LoginForm() {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [isInvestor, setIsInvestor] = useState(false);
+  const [name, setName] = useState('');
+
   const handleSubmit = () => {
     console.log('Submitted');
-    window.location.href = '/dashboard';
-    toast.info('You are now logged in!');
+    // window.location.href = '/dashboard';
+    console.log('Name:', name);
+    console.log('Email:', email);
+    console.log('Password:', password);
+    console.log('Is Investor:', isInvestor);
+    const url = 'http://localhost:3000/api/auth/signup';
+    const data = { name, email, password, is_investor: isInvestor };
+    fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    }).then((response) => {
+      if (response.ok) {
+        return response.json();
+      }
+      throw new Error('Signup failed');
+    }).then((data) => {
+      console.log('Signup:', data);
+      toast.success('You are now signed up!');
+      if (isInvestor) {
+        window.location.href = '/investor';
+        toast.info('You are now logged in!');
+      }
+      else {
+        toast.info('You are now logged in!');
+        window.location.href = '/dashboard';
+      }
+    }).catch((error) => {
+      console.error('Error:', error);
+      toast.error('Signup failed');
+    });
   };
   return (
     <Card className="w-full max-w-sm">
@@ -36,18 +73,30 @@ export function LoginForm() {
       <CardContent className="grid gap-4">
         <div className="grid gap-2">
           <Label htmlFor="name">Name</Label>
-          <Input id="name" type="name" required />
+          <Input id="name" type="name"
+            placeholder="John Doe"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            required />
         </div>
         <div className="grid gap-2">
           <Label htmlFor="email">Email</Label>
-          <Input id="email" type="email" placeholder="m@example.com" required />
+          <Input id="email" type="email"
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder="m@example.com" required />
         </div>
         <div className="grid gap-2">
           <Label htmlFor="password">Password</Label>
-          <Input id="password" type="password" required />
+          <Input id="password" type="password"
+            onChange={(e) => setPassword(e.target.value)}
+            placeholder="••••••••"
+            required />
         </div>
         <div className="flex items-center space-x-2">
-          <Checkbox id="terms" />
+          <Checkbox id="terms"
+            checked={isInvestor}
+            onClick={() => setIsInvestor(!isInvestor)}
+          />
           <label
             htmlFor="terms"
             className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"

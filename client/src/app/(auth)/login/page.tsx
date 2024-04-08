@@ -11,13 +11,43 @@ import {
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import Link from 'next/link';
+import { useState } from 'react';
 import { toast } from 'sonner';
 
 export function LoginForm() {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const handleSubmit = () => {
-    console.log('Submitted');
-    window.location.href = '/dashboard';
-    toast.info('You are now logged in!');
+    console.log('Email:', email);
+    console.log('Password:', password);
+    const url = 'http://localhost:3000/api/auth/login';
+    const data = { email, password };
+    fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    }).then((response) => {
+      if (response.ok) {
+        return response.json();
+      }
+      throw new Error('Login failed');
+    }).then((data) => {
+      console.log('Login:', data);
+      toast.success('You are now logged in!');
+      if (data.token.user.is_investor) {
+        window.location.href = '/investor';
+        toast.info('You are now logged in!');
+      }
+      else {
+        window.location.href = '/dashboard';
+        toast.info('You are now logged in!');
+      }
+    }).catch((error) => {
+      console.error('Error:', error);
+      toast.error('Login failed');
+    });
   };
   return (
     <Card className="w-full max-w-sm">
@@ -30,11 +60,16 @@ export function LoginForm() {
       <CardContent className="grid gap-4">
         <div className="grid gap-2">
           <Label htmlFor="email">Email</Label>
-          <Input id="email" type="email" placeholder="m@example.com" required />
+          <Input id="email" type="email"
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder="m@example.com" required />
         </div>
         <div className="grid gap-2">
           <Label htmlFor="password">Password</Label>
-          <Input id="password" type="password" required />
+          <Input id="password"
+            onChange={(e) => setPassword(e.target.value)}
+            placeholder="********"
+            type="password" required />
         </div>
       </CardContent>
       <CardFooter>
