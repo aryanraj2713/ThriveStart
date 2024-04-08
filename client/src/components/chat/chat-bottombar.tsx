@@ -95,7 +95,7 @@ export default function ChatBottombar({
           onKeyDown={handleKeyPress}
           onChange={handleInputChange}
           name="message"
-          placeholder="Aa"
+          placeholder="Type a message..."
           className="w-full border rounded-full resize-none bg-background h-12"
         />
 

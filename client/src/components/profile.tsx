@@ -1,16 +1,4 @@
 import type React from 'react';
-import {
-  AlertDialog,
-  AlertDialogAction,
-  AlertDialogCancel,
-  AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogTitle,
-  AlertDialogTrigger,
-} from '@/components/ui/alert-dialog';
-import UpdateForm from './update';
 
 interface ProfileProps {
   companyName: string;
@@ -80,25 +68,6 @@ const ProfilePage: React.FC<ProfileProps> = ({
           ))}
         </ul>
       </div>
-      <AlertDialog>
-        <AlertDialogTrigger className="bg-gray-900 hover:bg-gray-800 mt-6 px-4 py-2 rounded-lg">
-          Update Profile
-        </AlertDialogTrigger>
-        <AlertDialogContent>
-          <AlertDialogHeader>
-            <AlertDialogTitle className="text-center">
-              Are you sure you want to update your profile?
-            </AlertDialogTitle>
-            <AlertDialogDescription>
-              <UpdateForm />
-            </AlertDialogDescription>
-          </AlertDialogHeader>
-          <AlertDialogFooter>
-            <AlertDialogCancel>Cancel</AlertDialogCancel>
-            <AlertDialogAction>Continue</AlertDialogAction>
-          </AlertDialogFooter>
-        </AlertDialogContent>
-      </AlertDialog>
     </div>
   );
 };

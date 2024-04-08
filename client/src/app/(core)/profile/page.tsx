@@ -1,6 +1,8 @@
-import ProfilePage from '@/components/profile';
+"use client"
+import Company from '@/components/company';
+import Investor from '@/components/user';
 import Image from 'next/image';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 const socialLinks = [
   { name: 'LinkedIn', url: 'https://www.linkedin.com/' },
@@ -8,20 +10,22 @@ const socialLinks = [
 ];
 
 const Profile = () => {
+  const [isInvestor, setIsInvestor] = useState(false);
+
+  useEffect(() => {
+    const isInvestor = sessionStorage.getItem('is_investor');
+    setIsInvestor(isInvestor === 'true');
+  }, []);
+
   return (
     <div className="w-full lg:grid h-full lg:grid-cols-2 -z-10">
-      <div className="flex items-center justify-center py-12">
-        <ProfilePage
-          companyName="Your Company Name"
-          size="Large"
-          businessOwnerName="John Doe"
-          industry="Technology"
-          usp="Innovative solutions tailored for your needs."
-          profits="$1,000,000"
-          email="example@example.com"
-          socialLinks={socialLinks}
-        />
-      </div>
+      {
+        isInvestor ? (
+          <Investor />
+        ) : (
+          <Company />
+        )
+      }
       <div className="hidden bg-muted lg:block">
         <Image
           src="https://avatars.githubusercontent.com/u/91051053?v=4"

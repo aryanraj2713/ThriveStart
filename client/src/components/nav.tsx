@@ -24,6 +24,7 @@ const siteLinks = [
     name: 'Chat',
     to: '/chat',
   },
+
 ];
 
 export const Nav = () => {
@@ -38,7 +39,7 @@ export const Nav = () => {
           <Package2 className="h-6 w-6" />
           <span className="sr-only">Acme Inc</span>
         </Link>
-        {siteLinks.map(link => (
+        {localStorage.getItem('is_investor') !== 'true' && siteLinks.map(link => (
           <Link
             key={link.name}
             href={link.to}
@@ -47,6 +48,17 @@ export const Nav = () => {
             {link.name}
           </Link>
         ))}
+        {
+          localStorage.getItem('is_investor') === 'true' && (
+            <Link
+              href="/investor"
+              className="text-muted-foreground transition-colors hover:text-foreground"
+            >
+              Dashboard
+            </Link>
+          )
+        }
+
       </nav>
       <Sheet>
         <SheetTrigger asChild>
@@ -85,8 +97,6 @@ export const Nav = () => {
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
-            <DropdownMenuLabel>Hello, Jatin</DropdownMenuLabel>
-            <DropdownMenuSeparator />
             <DropdownMenuItem
               onClick={() => {
                 router.push('/profile');

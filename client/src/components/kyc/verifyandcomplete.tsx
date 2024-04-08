@@ -8,9 +8,9 @@ export default function VerifyAndComplete() {
     const handleSubmit = () => {
         const is_investor = sessionStorage.getItem("is_investor");
         if (is_investor === 'true') {
-            window.location.href = "/investor";
+            window.location.href = "/update-user";
         } else {
-            window.location.href = "/dashboard";
+            window.location.href = "/update-company";
         }
     }
     const { t } = useTranslation();
