@@ -1,7 +1,16 @@
 'use client';
 import React from 'react';
-import { PieChart } from '@mui/x-charts/PieChart';
-import { BarChart } from '@mui/x-charts/BarChart';
+import {
+    AlertDialog,
+    AlertDialogAction,
+    AlertDialogCancel,
+    AlertDialogContent,
+    AlertDialogDescription,
+    AlertDialogFooter,
+    AlertDialogHeader,
+    AlertDialogTitle,
+    AlertDialogTrigger,
+} from '@/components/ui/alert-dialog';
 import {
     Table,
     TableBody,
@@ -106,6 +115,27 @@ const Dashboard = () => {
                         voluptatibus impedit est assumenda. Tenetur ad atque similique
                         aliquam.
                     </CardContent>
+                    <div>
+                        <AlertDialog>
+                            <AlertDialogTrigger className="bg-gray-900 hover:bg-gray-800 mt-6 px-4 py-2 rounded-lg">
+                                Update Profile
+                            </AlertDialogTrigger>
+                            <AlertDialogContent>
+                                <AlertDialogHeader>
+                                    <AlertDialogTitle className="text-center">
+                                        Are you sure you want to update your profile?
+                                    </AlertDialogTitle>
+                                    <AlertDialogDescription>
+                                        {/* <UpdateForm /> */}
+                                    </AlertDialogDescription>
+                                </AlertDialogHeader>
+                                <AlertDialogFooter>
+                                    <AlertDialogCancel>Cancel</AlertDialogCancel>
+                                    <AlertDialogAction>Continue</AlertDialogAction>
+                                </AlertDialogFooter>
+                            </AlertDialogContent>
+                        </AlertDialog>
+                    </div>
                 </Card>
             </div>
         </div >
