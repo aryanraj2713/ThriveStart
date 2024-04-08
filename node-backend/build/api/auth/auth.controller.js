@@ -3,9 +3,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.handle_login = exports.handle_signup = void 0;
 const auth_service_1 = require("./auth.service");
 const handle_signup = async (req, res) => {
-    const { email, password, phone, name, is_investor } = req.body;
+    const { email, password, name, is_investor } = req.body;
     try {
-        await (0, auth_service_1.signup)(email, password, phone, name, is_investor);
+        await (0, auth_service_1.signup)(email, password, name, is_investor);
         return res.status(201).json({ message: 'User created successfully' });
     }
     catch (error) {
