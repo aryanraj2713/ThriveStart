@@ -31,9 +31,9 @@ export default function InputFile() {
         }
     };
     return (
-        <form onSubmit={onSubmit} encType="multipart/form-data">
-            <Label htmlFor="aadhar">{t("Upload Aadhar")}</Label>
-            <Input type="file" name="aadhar" id="aadhar" onChange={onSubmit} />
+        <form onSubmit={onSubmit} encType="multipart/form-data" className="flex justify-center flex-col">
+            <Label htmlFor="aadhar" className="text-center py-2">{t("Upload Aadhar")}</Label>
+            <Input type="file" name="aadhar" id="aadhar" className="text-center" onChange={onSubmit} />
             {isUploaded ? (
                 <p>{t("File uploaded successfully")}</p>
             ) : (

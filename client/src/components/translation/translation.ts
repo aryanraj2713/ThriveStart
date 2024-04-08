@@ -48,7 +48,7 @@ const translationJSON = {
                 "Congrats your KYC Process has been completed.",
             "Your KYC Status will be updated after inspection.":
                 "Your KYC Status will be updated after inspection.",
-            "Return to Dashboard": "Return to Dashboard",
+            "Return to Dashboard": "Next",
             "Aadhaar Verification": "Aadhaar Verification",
             "Video Verification": "Video Verification",
             "KYC Confirmation": "KYC Confirmation",

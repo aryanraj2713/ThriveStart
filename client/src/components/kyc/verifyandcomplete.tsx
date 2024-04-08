@@ -33,7 +33,7 @@ export default function VerifyAndComplete() {
                 <div
                     className="cursor-pointer"
                     onClick={handleSubmit}
-                >{t("Return to Dashboard")}</div>
+                >{t("Next")}</div>
             </Button>
         </div>
     );

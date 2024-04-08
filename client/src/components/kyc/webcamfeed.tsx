@@ -4,7 +4,7 @@ const WebcamFeed = ({ videoRef, frameType }: any) => {
     const localVideoRef = useRef(null);
     const usedVideoRef = videoRef || localVideoRef; // Use passed ref if available
 
-    const frames = {
+    const frames: any = {
         photo: { top: "15%", left: "25%", width: "50%", height: "70%" },
         pan: { top: "15%", left: "10%", width: "80%", height: "70%" },
         sign: { top: "30%", left: "20%", width: "60%", height: "40%" },

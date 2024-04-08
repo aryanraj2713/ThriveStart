@@ -1,6 +1,5 @@
 import { useEffect, useRef } from "react";
 import UploadAadhaar from "./uploadaadhar";
-import UploadPan from "./uploadpan";
 import { Button } from "@/components/ui/button";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
@@ -258,9 +257,8 @@ export default function PersonalDetailsForm({
                     </form>
                 </Form> */}
 
-                <div className="flex justify-between">
+                <div className="flex justify-center w-full">
                     <UploadAadhaar />
-                    <UploadPan />
                 </div>
                 <div>
                     <Button

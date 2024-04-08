@@ -42,7 +42,7 @@ export default function KYC() {
         <div className="max-w-[1300px] mx-auto sm:p-10 py-10 px-5 min-h-screen">
             <TranslateButton />
             <div className="border-b border-gray-200 pb-5 mb-5">
-                <h1 className="text-2xl font-bold">{t("Welcome to Online KYC")}</h1>
+                <h1 className="text-2xl font-bold">{t("Welcome to ThriveStart KYC")}</h1>
                 <p className="font-semibold">
                     {t("Follow the steps to complete your KYC Process")}
                 </p>

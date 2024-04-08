@@ -4,12 +4,13 @@ import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import "@/components/translation/translation";
 import { useTranslation } from "react-i18next";
+import { AccordionSummaryProps } from "@mui/material";
 
 const CaptureFrame = ({ onNextStep }: any) => {
     const { t } = useTranslation();
     const videoRef = useRef(null);
-    const canvasRef = useRef(null);
-    const [capturedImages, setCapturedImages] = useState({
+    const canvasRef: any = useRef(null);
+    const [capturedImages, setCapturedImages] = useState<any>({
         photo: null,
         pan: null,
         sign: null,
@@ -26,8 +27,8 @@ const CaptureFrame = ({ onNextStep }: any) => {
     }, []);
 
     const captureImage = (frameType: any) => {
-        const video = videoRef.current;
-        const canvas = canvasRef.current;
+        const video: any = videoRef.current;
+        const canvas: any = canvasRef.current;
         if (video && canvas) {
             const context = canvas.getContext("2d");
 
@@ -52,7 +53,7 @@ const CaptureFrame = ({ onNextStep }: any) => {
             );
 
             const imageDataUrl = canvas.toDataURL("image/png");
-            setCapturedImages((prevImages) => ({
+            setCapturedImages((prevImages: any) => ({
                 ...prevImages,
                 [frameType]: imageDataUrl,
             }));
@@ -73,7 +74,7 @@ const CaptureFrame = ({ onNextStep }: any) => {
             navigator.mediaDevices
                 .getUserMedia({ video: true })
                 .then((stream) => {
-                    const video = videoRef.current;
+                    const video: any = videoRef.current;
                     video.srcObject = stream;
                     video.play();
                 })
@@ -83,7 +84,7 @@ const CaptureFrame = ({ onNextStep }: any) => {
         }
     };
 
-    const speakMessage = (message) => {
+    const speakMessage = (message: any) => {
         if (typeof window !== "undefined" && window.speechSynthesis) {
             const speech = new SpeechSynthesisUtterance();
             speech.text = message;
@@ -97,13 +98,6 @@ const CaptureFrame = ({ onNextStep }: any) => {
     const handleSaveAndContinue = () => {
         // Logic to navigate to the next frame type
         if (currentFrame === "photo") {
-            setCurrentFrame("pan");
-            setTitle("Take a PAN Card Photograph");
-            setSubtitle("Position your PAN Card inside the rectangle for photo");
-            speakMessage(
-                "Position your PAN card inside the frame and click the capture button to take a picture of your PAN card. After capturing the picture, proceed to the next step.",
-            );
-        } else if (currentFrame === "pan") {
             setCurrentFrame("aadhar");
             setTitle("Take a Aadhaar Photograph");
             setSubtitle("Position your Aadhaar inside the rectangle for photo");
