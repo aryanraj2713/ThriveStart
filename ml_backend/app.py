@@ -23,11 +23,11 @@ async def root():
 
 
 @app.post("/analyze_b")
-async def analyze_business_data(id: str):
+async def analyze_business_data(id: int):
     result = run_business_assistant(id)
     return {"result": result}
 
 @app.post("/analyze_i")
-async def run_investor_descp(id: str):
+async def run_investor_descp(id: int):
     result = run_investor_desc(id)
     return {"result": result}
