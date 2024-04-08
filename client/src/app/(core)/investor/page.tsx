@@ -11,6 +11,8 @@ import {
     AlertDialogTitle,
     AlertDialogTrigger,
 } from '@/components/ui/alert-dialog';
+import { useTranslation } from "react-i18next";
+
 import {
     Table,
     TableBody,
@@ -21,7 +23,10 @@ import {
     TableRow,
 } from '@/components/ui/table';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
+import TranslateButton from '@/components/translation/translationbutton';
+
 const Dashboard = () => {
+    const { t } = useTranslation();
     const [invested_companies, setInvestedCompanies] = useState<any>([]);
     const [uninvested_companies, setUninvestedCompanies] = useState<any>([]);
     const get_invested_companies = async () => {
@@ -90,6 +95,7 @@ const Dashboard = () => {
     }, []);
     return (
         <div className="flex flex-col space-y-10 justify-between px-8 py-8">
+            <TranslateButton />
             <div className="grid grid-cols-3 gap-3 md:grid-cols-3 md:gap-8 md:text-2xl font-medium">
                 <Card>
                     <CardHeader>Name</CardHeader>

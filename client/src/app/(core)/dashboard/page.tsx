@@ -12,10 +12,14 @@ import {
   TableRow,
 } from '@/components/ui/table';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
+import TranslateButton from '@/components/translation/translationbutton';
+import { useTranslation } from "react-i18next";
 
 const Dashboard = () => {
+  const { t } = useTranslation()
   return (
     <div className="flex flex-col h-full justify-between space-y-4 px-8 py-8">
+      <TranslateButton />
       <div className="grid grid-cols-2 gap-4 md:grid-cols-4 md:gap-8 md:text-2xl font-medium">
         <Card>
           <CardHeader>Tesla</CardHeader>
