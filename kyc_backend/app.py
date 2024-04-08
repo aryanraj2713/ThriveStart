@@ -12,6 +12,14 @@ from qr_uid_matching_export import decode_qr_opencv, check_uid_last_4_digits
 app = Flask(__name__)
 CORS(app)
 
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 ADHAAR_IMAGE = "kyc_backend/scripts"
 
 
