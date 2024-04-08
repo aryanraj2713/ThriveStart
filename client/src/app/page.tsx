@@ -9,7 +9,7 @@ const Home = () => {
       <div className="font-bold text-5xl md:text-8xl">ThriveStart</div>
       <TextRevealCard
         text="You know the business"
-        revealText="I know the chemistry "
+        revealText="We know the chemistry "
       />
       <div className="w-full md:max-w-lg">
         <p className="text-center text-lg">
