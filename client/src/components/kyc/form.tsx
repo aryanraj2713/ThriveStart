@@ -2,67 +2,18 @@ import { useEffect, useRef } from "react";
 import UploadAadhaar from "./uploadaadhar";
 import UploadPan from "./uploadpan";
 import { Button } from "@/components/ui/button";
-import {
-    Form,
-    FormControl,
-    FormField,
-    FormItem,
-    FormLabel,
-    FormMessage,
-} from "@/components/ui/form";
-import {
-    Select,
-    SelectContent,
-    SelectItem,
-    SelectTrigger,
-    SelectValue,
-} from "@/components/ui/select";
-import { Input } from "@/components/ui/input";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import { z } from "zod";
 import "@/components/translation/translation";
 import { useTranslation } from "react-i18next";
-
-const formSchema = z.object({
-    name: z.string().min(2, {
-        message: "Username must be at least 2 characters.",
-    }),
-    address: z.string().min(2, {
-        message: "Address must be at least 2 characters.",
-    }),
-    dob: z.date(),
-    email: z.string().email(),
-    incomeRange: z.enum(["<2L", "2-5L", "5-10L", ">10L"]),
-    employmentType: z.enum(["Salaried", "Self Employed"]),
-    aadhaarNumber: z.string().length(12, {
-        message: "Aadhaar Number must be 12 characters.",
-    }),
-    panCardNumber: z.string().length(10, {
-        message: "PAN Card Number must be 10 characters.",
-    }),
-});
 
 export default function PersonalDetailsForm({
     onNextStep,
 }: {
     onNextStep: () => void;
 }) {
-    const form = useForm<z.infer<typeof formSchema>>({
-        resolver: zodResolver(formSchema),
-        defaultValues: {
-            name: "",
-            address: "",
-            dob: new Date(),
-            email: "",
-            incomeRange: "<2L",
-            employmentType: "Salaried",
-            aadhaarNumber: "",
-            panCardNumber: "",
-        },
-    });
     const { t } = useTranslation();
-    const onSubmit = async (values: z.infer<typeof formSchema>) => {
+    const onSubmit = async (values: any) => {
         try {
             //   const response = await fetch("/kycDetails", {
             //     method: "POST",
@@ -84,10 +35,10 @@ export default function PersonalDetailsForm({
         }
     };
 
-    const recognition = useRef<SpeechRecognition | null>(null);
+    const recognition = useRef<any>(null);
 
     useEffect(() => {
-        const handleSpeechRecognition = (event: SpeechRecognitionEvent) => {
+        const handleSpeechRecognition = (event: any) => {
             const lastResult = event.results[event.results.length - 1][0].transcript
                 .trim()
                 .toLowerCase();
@@ -97,7 +48,7 @@ export default function PersonalDetailsForm({
         };
 
         if ("SpeechRecognition" in window) {
-            recognition.current = new SpeechRecognition();
+            // recognition.current = new SpeechRecognition();
             recognition.current.lang = "en-US";
             recognition.current.continuous = true;
             recognition.current.interimResults = false;

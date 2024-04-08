@@ -11,20 +11,16 @@ const WebcamFeed = ({ videoRef, frameType }: any) => {
     };
 
     useEffect(() => {
-        let stream: any = null;
+        let stream: MediaStream | null = null;
 
         const startStream = async () => {
-            try {
-                if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-                    stream = await navigator.mediaDevices.getUserMedia({ video: true });
-                    const video = usedVideoRef.current;
-                    if (video) {
-                        video.srcObject = stream;
-                        video.play();
-                    }
-                }
-            } catch (error) {
-                console.error("Error accessing the camera", error);
+            if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+                stream = await navigator.mediaDevices.getUserMedia({ video: true });
+                const video = usedVideoRef.current;
+                video.srcObject = stream;
+                video.play().catch((error: any) => {
+                    console.error("Error playing the video", error);
+                })
             }
         };
 

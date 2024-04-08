@@ -5,6 +5,14 @@ import "@/components/translation/translation";
 import { useTranslation } from "react-i18next";
 
 export default function VerifyAndComplete() {
+    const handleSubmit = () => {
+        const is_investor = sessionStorage.getItem("is_investor");
+        if (is_investor === 'true') {
+            window.location.href = "/investor";
+        } else {
+            window.location.href = "/dashboard";
+        }
+    }
     const { t } = useTranslation();
     return (
         <div className="flex flex-col justify-center items-center my-20">
@@ -22,7 +30,10 @@ export default function VerifyAndComplete() {
                 {t("Your KYC Status will be updated after inspection.")}
             </p>
             <Button asChild className="mt-6 bg-gray-800 hover:bg-gray-900 text-white">
-                <Link href="/dashboard">{t("Return to Dashboard")}</Link>
+                <div
+                    className="cursor-pointer"
+                    onClick={handleSubmit}
+                >{t("Return to Dashboard")}</div>
             </Button>
         </div>
     );

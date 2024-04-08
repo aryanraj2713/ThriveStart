@@ -45,13 +45,14 @@ export function LoginForm() {
       console.log('Signup:', data);
       toast.success('You are now signed up!');
       if (isInvestor) {
-        window.location.href = '/investor';
         toast.info('You are now logged in!');
+        sessionStorage.setItem('is_investor', 'true');
       }
       else {
+        sessionStorage.setItem('is_investor', 'false');
         toast.info('You are now logged in!');
-        window.location.href = '/dashboard';
       }
+      window.location.href = '/kyc';
     }).catch((error) => {
       console.error('Error:', error);
       toast.error('Signup failed');

@@ -164,7 +164,7 @@ const CaptureFrame = ({ onNextStep }: any) => {
                                 <Button
                                     onClick={handleSaveAndContinue}
                                     variant="outline"
-                                    className="action-button ml-2 bg-green-400"
+                                    className="action-button ml-2 bg-gray-800 hover:bg-gray-900 text-white"
                                 >
                                     {t("Save and continue")}
                                 </Button>
