@@ -1,6 +1,9 @@
 import os
 import json
+from dotenv import load_dotenv
 from groq import Groq
+
+load_dotenv()
 
 def run_business_assistant():
     open_json = open("business_data.json")
@@ -8,7 +11,7 @@ def run_business_assistant():
 
     client = Groq(
         # This is the default and can be omitted
-        api_key=os.environ.get("GROQ_API_KEY"),
+        api_key=os.getenv("GROQ_API_KEY"),
     )
 
     # query = input("Input query: ")
