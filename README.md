@@ -1,2 +1,2 @@
 # ThriveStart
-/*Bababoii*/
+<!---Bababoii--->
