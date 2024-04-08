@@ -5,7 +5,7 @@ from groq import Groq
 
 load_dotenv()
 
-def run_business_assistant(id: str):
+def run_business_assistant(id: int):
     open_json = open("business_data_2.json")
     data = json.load(open_json) 
 
