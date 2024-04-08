@@ -28,11 +28,11 @@ const Profile = () => {
       }
       <div className="hidden bg-muted lg:block">
         <Image
-          src="https://avatars.githubusercontent.com/u/91051053?v=4"
+          src="https://raw.githubusercontent.com/mkswagger/ThriveStart/main/client/public/icon_startup.jpg?token=GHSAT0AAAAAACL4GCNBVJRF4UMS2J5DRKNCZQUK3FQ"
           alt="Image"
           width="1920"
           height="1080"
-          className="h-full w-full object-cover dark:brightness-[0.2] dark:grayscale"
+          className="h-full w-full object-cover"
         />
       </div>
     </div>
