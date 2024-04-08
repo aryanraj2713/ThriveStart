@@ -1,0 +1,15 @@
+{
+  "company_name": "ABC Corporation",
+  "id": 1,
+  "revenue": "$10,000,000",
+  "industry": "Technology",
+  "USP": "Cutting-edge AI solutions",
+  "sales": "$8,000,000",
+  "profit": "$2,000,000",
+  "employees": 100,
+  "age": "5 years"
+}
+{
+  "company_name": "XYZ Corporation",
+  "id": 2,
+}
