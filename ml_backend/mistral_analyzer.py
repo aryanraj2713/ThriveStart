@@ -11,7 +11,7 @@ def run_business_assistant(id: int):
 
     # find the business data using the query
     for business in data:
-        if business["id"] == id:
+        if business["business_id"] == id:
             data = business
             break
 
