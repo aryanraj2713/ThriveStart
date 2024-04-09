@@ -8,7 +8,7 @@ def run_investor_desc(id: int):
 
     # find the investor data using the query
     for investor in data:
-        if investor["id"] == id:
+        if investor["investor_id"] == id:
             data = investor
             break
 
@@ -23,7 +23,7 @@ def run_investor_desc(id: int):
         messages=[
             {
                 "role": "system",
-                "content": f"Based on the provided json data,describe investor in 7 points and explain why he is a good investor {data}",
+                "content": f"Based on the provided json data, describe investor in 7 points and explain why he is a good investor {data}",
             },
             {
                 "role": "user",

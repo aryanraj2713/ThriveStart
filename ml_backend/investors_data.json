@@ -1,7 +1,7 @@
 [
 	{
 		"name": "John Doe",
-		"id": "f5f144a9-6cb1-4d13-836e-18ac5c0a80a3",
+		"investor_id": "f5f144a9-6cb1-4d13-836e-18ac5c0a80a3",
 		"netWorth": 350000000,
 		"education": [
 			{
@@ -31,7 +31,7 @@
 	},
 	{
 		"name": "Jane Smith",
-		"id": "e2f7c09e-ef2d-4d1d-9e58-872d502a49c9",
+		"investor_id": "e2f7c09e-ef2d-4d1d-9e58-872d502a49c9",
 		"netWorth": 280000000,
 		"education": [
 			{
