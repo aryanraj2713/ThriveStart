@@ -86,12 +86,9 @@ def socialmedia():
 
 name = input("What is the name for the website? (this could be your name or something else) | ")
 print(f'Thanks! {name} is a really nice name. :D')
-pronouns = input("What are your pronouns? (if you don't want to use pronouns, type no or n). | ")
-pronounslower = pronouns.lower()
-if pronounslower == "no" or pronounslower == "n":
-  pronouns = ""
+
 description = input("What do you want to use as your description? | ")
-domain = input("What domain do you want to use? (Without https:// or http://) | ")
+domain = "http://"
 image = input("What image do you want to use? (You can enter a URL or a local path here). | ")
 previewimage = input("What image do you want to use as a thumbnail? (Only URL) | ")
 
@@ -134,8 +131,7 @@ rs9 = open("./web/wbsg_resources/index/part9.txt", "r")
 rs9 = rs9.read()
 rs10 = open("./web/wbsg_resources/index/part10.txt", "r")
 rs10 = rs10.read()
-partpronouns = open("./web/wbsg_resources/index/partpronouns.txt", "r")
-partpronouns = partpronouns.read()
+
 css = open("./web/wbsg_resources/index/css.txt", "r")
 css = css.read()
 
@@ -152,7 +148,7 @@ if path == False:
 elif path == True:
   socialmedias = open("./web/wbsg_resources/temp/sci.txt", "r")
   socialmedias = socialmedias.read()
-index = rs1 + domain + "\" content='" + name + rs2 + description + rs3 + previewimage + rs4 + name + rs5 + image + rs6 + name + rs7 + description + rs8 + pronouns + partpronouns + image + rs9 + ccards + rs10 + socialmedias + "\n	</footer>\n</html>"
+index = rs1 + domain + "\" content='" + name + rs2 + description + rs3 + previewimage + rs4 + name + rs5 + image + rs6 + name + rs7 + description + rs8  + image + rs9 + ccards + rs10 + socialmedias + "\n	</footer>\n</html>"
 f = open("./web/index.html", "a+")
 f.write(index)
 f.close()
