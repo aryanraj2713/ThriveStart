@@ -31,7 +31,7 @@
 	},
 	{
 		"name": "Jane Smith",
-		"investor_id": "e2f7c09e-ef2d-4d1d-9e58-872d502a49c9",
+		"investorId": "e2f7c09e-ef2d-4d1d-9e58-872d502a49c9",
 		"netWorth": 280000000,
 		"education": [
 			{

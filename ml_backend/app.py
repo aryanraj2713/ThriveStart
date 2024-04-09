@@ -1,9 +1,13 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-
+from model.analyse import (
+    BusinessModel,
+    InvestorModel,
+    businessAnalysis,
+    investorAnalysis,
+)
 
 app = FastAPI()
-
 
 app.add_middleware(
     CORSMiddleware,
@@ -13,21 +17,24 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-from mistral_analyzer import run_business_assistant
-from investor_analyzer import run_investor_desc
 
 @app.get("/")
 async def root():
     return {"message": "Hello World"}
 
+@app.post("/analyse/business")
+async def analyse_business(business: BusinessModel, q: str):
+    try:
+        result = businessAnalysis(business, q)
+        return {"result": result}
+    except Exception as e:
+        return {"error": str(e)}, 400
 
 
-@app.post("/analyze_b")
-async def analyze_business_data(id: int):
-    result = run_business_assistant(id)
-    return {"result": result}
-
-@app.post("/analyze_i")
-async def run_investor_descp(id: int):
-    result = run_investor_desc(id)
-    return {"result": result}
+@app.post("/analyse/investor")
+async def analyse_investor(investor: InvestorModel, q: str):
+    try:
+        result = investorAnalysis(investor, q)
+        return {"result": result}
+    except Exception as e:
+        return {"error": str(e)}, 400
