@@ -8,7 +8,7 @@ from qr_uid_matching_export import decode_qr_opencv, check_uid_last_4_digits
 app = Flask(__name__)
 CORS(app)
 
-ADHAAR_IMAGE = "kyc_backend/scripts"
+ADHAAR_IMAGE = "scripts/aadhar_image"
 
 @app.route('/')
 def index():
