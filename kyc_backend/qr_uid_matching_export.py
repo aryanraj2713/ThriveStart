@@ -24,7 +24,7 @@ def check_uid_last_4_digits(qr_data, ocr_uid):
         return False
 
 # Example usage
-image_path = 'scripts/aadhar_image/aadhar.png'
+image_path = 'scripts/aadhar_image/aadhar_img.png'
 ocr_uid = 'XXXXXXXX7743'  # Replace with your actual UID
 qr_data= decode_qr_opencv(image_path)
 check_uid_last_4_digits(qr_data, ocr_uid)
