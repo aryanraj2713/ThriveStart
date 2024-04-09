@@ -1,3 +1,4 @@
+import json
 import os
 from typing import Dict, List, Union
 from groq import Groq
@@ -47,6 +48,44 @@ businessIndex = pinecone.Index("default")
 angle = AnglE.from_pretrained("WhereIsAI/UAE-Large-V1", pooling_strategy="cls").cuda()
 
 client = Groq(api_key=os.getenv("GROQ_API_KEY"))
+
+def upsertBusiness(business: BusinessModel):
+    vector_embedding = angle.encode(
+        business.businessDescription, to_numpy=True
+    ).tolist()[0]
+    businessIndex.upsert(
+        vectors=[
+            {
+                "id": str(business.id),
+                "values": vector_embedding,
+                "metadata": flattenDictValuesToJSON(business.model_dump()),
+            }
+        ]
+    )
+
+def flattenDictValuesToJSON(d: Dict):
+    metadata = d.copy()
+    for k, v in d.items():
+        if isinstance(v, list):
+            metadata[k] = json.dumps(v)
+        elif isinstance(v, dict):
+            metadata[k] = flattenDictValuesToJSON(v)
+        else:
+            metadata[k] = str(v)
+    return metadata
+
+def upsertInvestor(investor: InvestorModel):
+    vector_embedding = angle.encode(investor.name, to_numpy=True).tolist()[0]
+    
+    businessIndex.upsert(
+        vectors=[
+            {
+                "id": str(investor.id),
+                "values": vector_embedding,
+                "metadata": flattenDictValuesToJSON(investor.model_dump()),
+            }
+        ]
+    )
 
 
 def businessAnalysis(business: BusinessModel, q: str):

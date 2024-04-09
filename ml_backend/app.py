@@ -5,6 +5,8 @@ from model.analyse import (
     InvestorModel,
     businessAnalysis,
     investorAnalysis,
+    upsertBusiness,
+    upsertInvestor,
 )
 
 app = FastAPI()
@@ -21,6 +23,23 @@ app.add_middleware(
 @app.get("/")
 async def root():
     return {"message": "Hello World"}
+
+@app.post("/upsert/business")
+async def upsert_business(business: BusinessModel):
+    try:
+        upsertBusiness(business)
+        return {"message": "Business data upserted successfully"}
+    except Exception as e:
+        return {"error": str(e)}, 400
+    
+@app.post("/upsert/investor")
+async def upsert_investor(investor: InvestorModel):
+    try:
+        upsertInvestor(investor)
+        return {"message": "Investor data upserted successfully"}
+    except Exception as e:
+        return {"error": str(e)}, 400
+
 
 @app.post("/analyse/business")
 async def analyse_business(business: BusinessModel, q: str):
