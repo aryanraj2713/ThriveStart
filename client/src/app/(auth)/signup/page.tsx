@@ -45,7 +45,7 @@ export function LoginForm() {
       console.log('Signup:', data);
       toast.success('You are now signed up!');
       localStorage.setItem('email', email);
-      if (data.token.user.is_investor) {
+      if (isInvestor) {
         localStorage.setItem('is_investor', 'true');
       }
       else {

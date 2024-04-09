@@ -6,14 +6,15 @@ import { useTranslation } from "react-i18next";
 
 export default function VerifyAndComplete() {
     const handleSubmit = () => {
-        const is_investor = sessionStorage.getItem("is_investor");
-        if (is_investor === 'true') {
+        const is_investor = localStorage.getItem("is_investor");
+        if (is_investor == 'true') {
             window.location.href = "/update-user";
         } else {
             window.location.href = "/update-company";
         }
     }
     const { t } = useTranslation();
+    console.log(localStorage.getItem("is_investor"));
     return (
         <div className="flex flex-col justify-center items-center my-20">
             <Player

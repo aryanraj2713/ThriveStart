@@ -3,6 +3,8 @@
 import React, { useState } from 'react';
 
 const UpdateCompanyForm: React.FC = () => {
+    const isInvestor = localStorage.getItem('is_investor');
+    console.log('Is Investor:', isInvestor);
     const [company, setCompany] = useState({
         companyName: '',
         ownersName: '',

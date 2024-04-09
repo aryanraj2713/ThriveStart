@@ -16,9 +16,9 @@ const Profile = () => {
     const isInvestor = localStorage.getItem('is_investor');
     setIsInvestor(isInvestor === 'true');
     const email = localStorage.getItem('email')
-    const searchBy = isInvestor === 'true' ? 'investor' : 'company'
+    const searchBy = isInvestor === 'true' ? 'user' : 'company'
     console.log(email)
-    const url = `http://localhost:3000/api/${searchBy}/samsung@gmail.com`
+    const url = `http://localhost:3000/api/${searchBy}/${email}`
     console.log(url)
     const fetchData = async () => {
       try {
