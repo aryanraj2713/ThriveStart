@@ -1,5 +1,9 @@
 # ThriveStart - Unta﻿ngle the Startup Labyrinth with AI-powered Matching, Real-Time Analytics & Smart Growth 💸
 
+
+- [Presentation](https://www.canva.com/design/DAGBAu9QcoA/rKUHUqc9YZ7DEk1Ruxebxw/edit)
+
+  
 ## Problem Statement: 👔
 Many budding entrepreneurs in India face hurdles due to a lack of formal domain-related knowledge, making it challenging to present business statistics and secure investments. 
 The abse further compounds their challenges, hindering their ability to showcase their work effectively. This gap in knowledge and online presence contributes to difficulties in business growth and exacerbates poverty levels.
